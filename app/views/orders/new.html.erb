@@ -1,0 +1,5 @@
+<div class="container w-50 justify-content-center">
+  <div class="h5 text-center">(Order <%= @product.title %>)</div>
+  <br>
+  <%= render partial: "form", locals: { productid: @product.id, order: @order, submit_btn: "Order Product" } %> 
+</div>

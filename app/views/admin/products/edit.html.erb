@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <h2 class="text-center">Update Informations</h2>
+  <h3 class="text-center">(<%= @product.title %>)</h3>
+
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+
+      <% if @product.errors.any? %>
+        <hr>
+        <div style="product:red;">
+          <h5><%= @item.errors.count %> errors found.</h5>
+          <ul>
+            <% @product.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <hr>
+      <%= render partial: "form", locals: { product: @product, url: admin_product_path, submit_btn: "Update Product" } %>
+
+    </div>
+    <div class="col-3">
+    </div>
+  </div>
+  
+</div>

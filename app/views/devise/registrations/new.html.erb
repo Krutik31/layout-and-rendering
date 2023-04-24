@@ -1,0 +1,36 @@
+<div class="container justify-content-center w-50">
+  <h2>Sign up</h2><hr>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field" class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.label :role %>
+      <%= f.select :role, User::roles.keys.map{|k| [k,k]}, {include_blank: 'Select role'}, {class: "form-control"}%>
+    </div><br>
+
+    <div class="field" class="form-group">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
+    </div><br>
+
+    <div class="field" class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
+    </div><br>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class:"btn btn-sm btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

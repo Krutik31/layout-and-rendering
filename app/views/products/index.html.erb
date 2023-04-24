@@ -1,0 +1,43 @@
+<div class="container text-center justify-content-center">
+  <br>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th colspan="7"><h3>List of Products</h3></th>
+      </tr>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Is active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.title %></td>
+          <td><%= product.price %></td>
+          <td>
+            <% status = product.product_status %>
+            <% if (status == 0) %>
+              <span class="badge badge-success">In stock</span>
+            <% elsif (status == 1) %>
+              <span class="badge badge-danger">Out of stock</span>
+            <% elsif (status == 2) %>
+              <span class="badge badge-info">Coming soon</span>
+            <% end %>
+          </td>
+          <td><%= product.is_active ? 'Yes' : 'No' %></td>
+          <td>
+            <%= link_to "View", product_path(product), class:"btn btn-success btn-sm" %>
+            &nbsp;&nbsp;
+            <%= link_to "Order now", new_product_order_path(product.id), class:"btn btn-dark btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
