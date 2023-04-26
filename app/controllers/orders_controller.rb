@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_userrole, except: :index
+  before_action :authenticate_user!
 
   layout :order_layout
 
