@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LayoutRendering</title>
+    <title>MerchantPanel</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -25,7 +25,13 @@
       </div>
     <% elsif alert %> 
     <p class="alert"><%= alert %></p>
-    <% end %>  
+    <% end %>
+
+    <br>
+    <div class="h1 text-center">Merchant Panel</div>
+    <hr>  
+
     <%= yield %>
+    
   </body>
 </html>

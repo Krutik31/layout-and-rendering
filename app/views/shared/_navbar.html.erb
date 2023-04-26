@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg bg-secondary navbar-dark"> 
+  <% if user_signed_in? %>
+    <div class="container-fluid justify-content-start"> 
+      <%= link_to "Home", '/', class: "navbar-brand" %>
+      <% if current_user.role == 'Merchant' %>
+        <%= link_to "Products", products_path, class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "Products", admin_products_path, class: "navbar-brand" %>
+      <% end %>
+      <%= link_to "Orders", orders_path, class: "navbar-brand" %>
+    </div>
+    <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "navbar-brand btn btn-sm btn-danger", style: "font-size: 15px;" %>
+  <% else %>
+    <div class="container-fluid justify-content-start"> 
+      <%= link_to "Home", '/', class: "navbar-brand" %>
+    </div>
+    <%= link_to "Sign up", new_user_registration_path, class: "navbar-brand btn btn-sm btn-primary", style: "font-size: 15px;" %>
+    <%= link_to "Sign in", new_user_session_path, class: "navbar-brand btn btn-sm btn-success", style: "font-size: 15px;" %>
+  <% end %>
+</nav>
