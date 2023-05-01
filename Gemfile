@@ -15,6 +15,9 @@ gem 'devise'
 # Use Pry gem for debugging.
 gem 'pry'
 
+# Use Carrierwave gem for file upload.
+gem 'carrierwave'
+
 # Use postgrees as the database for Active Record
 gem 'pg'
 

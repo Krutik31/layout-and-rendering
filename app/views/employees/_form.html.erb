@@ -1,0 +1,91 @@
+<%= form_with model: employee, multipart: true do |form| %>
+  <div class="form-group">
+    <%= form.label :employee_name %>
+    <%= form.text_field :employee_name, class:"form-control", placeholder:"Enter employeename" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class:"form-control", placeholder:"Enter email" %>
+  </div>
+
+  <% if (action == "new") %>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class:"form-control", placeholder:"Enter password" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    Gender: 
+    <br> 
+    <%= form.radio_button :gender, 1 %>
+    <%= form.label :gender_1, "Male" %>
+    <%= form.radio_button :gender, 2 %>
+    <%= form.label :gender_2, "Female" %>
+  </div>
+
+  <div class="form-group">
+    Hobbies:
+    <br>
+    <%= form.collection_check_boxes(:hobbies, Hobby.order(:hobby), :id, :hobby) do |b| %>
+      <% if (action == "edit") && (employee.hobby_ids.include?(b.value)) %>
+        <%= b.check_box(checked: "checked") %>
+      <% else %>
+        <%= b.check_box %>
+      <% end %>
+      <%= b.label %>
+      <br>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_area :address, class:"form-control", placeholder:"Enter address", rows:"4" %>
+  </div>
+
+  <% if (action == "new") %>
+  <hr>
+    <div class="form-group">
+      <span class="h5">Sub Addresses:</span>
+      <br><br>
+
+      <%= form.fields_for :addresses, Address.new do |addresses_form| %>
+        <%= addresses_form.label :house_name %>
+        <%= addresses_form.text_field :house_name, class:"form-control", placeholder:"Enter housename" %>
+        <br>
+        <%= addresses_form.label :street_name %>
+        <%= addresses_form.text_field :street_name, class:"form-control", placeholder:"Enter streetname" %>
+        <br>
+        <%= addresses_form.label :road %>
+        <%= addresses_form.text_field :road, class:"form-control", placeholder:"Enter road" %>
+      <% end %>
+
+    </div>
+  <hr>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :mobile_number %>
+    <%= form.telephone_field :mobile_number, class:"form-control", placeholder:"Enter mobilenumber" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :birth_date, "Date of Birth" %><br>
+    <%= form.date_field :birth_date, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :document, "Document" %><br>
+    <%= form.file_field :document, class:"form-control" %>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <%= form.submit value:"#{submit_btn}", class:"btn btn-sm btn-success float-left" %>
+    </div>
+    <div class="col-6">
+      <%= link_to "Back", employees_path, class:"btn btn-sm btn-danger float-right" %>
+    </div>
+  </div>
+<% end %>

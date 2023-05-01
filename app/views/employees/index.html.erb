@@ -1,0 +1,52 @@
+<div class="container-fluid text-center">
+  <br>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+
+      <%= render partial: "search" %>
+      <br>
+
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th colspan="5"><h3>List of Employees</h3></th>
+          </tr>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No.</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @employees.each do |employee| %>
+            <tr>
+              <td><%= employee.id %></td>
+              <td><%= employee.employee_name %></td>
+              <td><%= employee.email %></td>
+              <td><%= employee.mobile_number %></td>
+              <td>
+                <%= link_to "View", employee_path(employee), class:"btn btn-success btn-sm" %>
+                &nbsp;&nbsp;
+                <%= link_to "Edit", edit_employee_path(employee), class:"btn btn-warning btn-sm" %>
+                &nbsp;&nbsp;
+                <%= link_to "Destroy", employee_path(employee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="row col-12 justify-content-center">
+        <%= link_to "Add new Employee", new_employee_path, class:"btn btn-sm btn-primary" %>
+      </div>
+      <br>
+      <div class="row col-12 justify-content-center">
+        <%= link_to "All Employees...", employees_path %>
+      </div>
+
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

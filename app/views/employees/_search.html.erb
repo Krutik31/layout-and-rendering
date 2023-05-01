@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="mx-auto">
+    <%= form_with url: search_employees_path, method: :get do |form| %>
+      <%= form.text_field :search_employee, placeholder:"search by employeename..."  %>
+      <%= form.submit "Search", class:"btn btn-sm btn-success" %>
+    <% end %>
+  </div>
+</div>

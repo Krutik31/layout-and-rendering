@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+hobbies = ['Playing Games', 'Reading Books', 'Watching Movies & Webshows']
+
+3.times do |hb|
+  Hobby.create(id: hb + 1, hobby: hobbies[hb])
+end
