@@ -11,11 +11,11 @@ class Employee < ApplicationRecord
   after_update_commit :update_hobbies_data
 
   def add_hobbies_data
-    Employee.find(id).hobbies << Hobby.where(id: hobbies_data)
+    hobbies << Hobby.where(id: hobbies_data)
   end
 
   def update_hobbies_data
-    Employee.find(id).hobbies.destroy(Hobby.all)
+    hobbies.destroy(Hobby.all)
     add_hobbies_data
   end
 end

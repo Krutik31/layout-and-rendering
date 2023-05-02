@@ -9,12 +9,11 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @address = Address.new
   end
 
   def create
     @employee = Employee.new(employee_params)
-    @employee.hobbies_data = params['employee']['hobbies']
+    hobbies_data
     if @employee.save
       redirect_to employees_path
     else
@@ -27,7 +26,7 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    @employee.hobbies_data = params['employee']['hobbies']
+    hobbies_data
     if @employee.update(employee_params)
       redirect_to employee_path(@employee)
     else
@@ -42,7 +41,7 @@ class EmployeesController < ApplicationController
   end
 
   def search
-    @employees = Employee.where('employee_name LIKE ?', '%' + params[:search_employee] + '%')
+    @employees = Employee.where('employee_name LIKE ?', "%#{params[:search_employee]}%")
     render :index
   end
 
@@ -50,6 +49,10 @@ class EmployeesController < ApplicationController
 
   def fetch_employee
     @employee = Employee.find(params[:id])
+  end
+
+  def hobbies_data
+    @employee.hobbies_data = params['employee']['hobbies']
   end
 
   def employee_params
