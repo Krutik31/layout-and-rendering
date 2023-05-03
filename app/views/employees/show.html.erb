@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <table class="table table-hover table-bordered text-center">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td><%= @employee.employee_name %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @employee.email %></td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td><%= @employee.gender %></td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td><%= @employee.address %></td>
+          </tr>
+          <tr>
+            <th>Mobile No.</th>
+            <td><%= @employee.mobile_number %></td>
+          </tr>
+          <tr>
+            <th>Birthdate</th>
+            <td><%= @employee.birth_date %></td>
+          </tr>
+          <tr>
+            <th>Document</th>
+            <td><%= link_to "View Document", @employee.document_url, target: "blank" %></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <table class="table table-hover table-bordered text-center">
+        <tbody>
+
+          <tr>
+            <th colspan="2">Hobbies</th>
+          </tr>
+          <% @employee.hobbies.each do |hb| %>
+            <tr>
+              <td colspan="2">
+                <%= hb.hobby %>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+
+      <table class="table table-hover table-bordered text-center">
+        <tbody>
+          <tr>
+            <th>House Name</th>
+            <td><%= @employee.addresses.first.house_name %></td>
+          </tr>
+          <tr>
+            <th>Street Name</th>
+            <td><%= @employee.addresses.first.street_name %></td>
+          </tr>
+          <tr>
+            <th>Road</th>
+            <td><%= @employee.addresses.first.road %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <div class="col-12">
+          <%= link_to "Back", employees_path, class:"btn btn-sm btn-danger float-right" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+</div>

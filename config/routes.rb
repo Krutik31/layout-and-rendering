@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: %i[index]
+
+  resources :employees do
+    collection do
+      get 'search'
+    end
+  end
 end
