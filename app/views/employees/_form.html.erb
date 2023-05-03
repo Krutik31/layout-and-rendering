@@ -28,12 +28,8 @@
   <div class="form-group">
     Hobbies:
     <br>
-    <%= form.collection_check_boxes(:hobbies, Hobby.order(:hobby), :id, :hobby) do |b| %>
-      <% if (action == "edit") && (employee.hobby_ids.include?(b.value)) %>
-        <%= b.check_box(checked: "checked") %>
-      <% else %>
-        <%= b.check_box %>
-      <% end %>
+    <%= form.collection_check_boxes(:hobby_ids, Hobby.all, :id, :hobby) do |b| %>
+      <%= b.check_box %>
       <%= b.label %>
       <br>
     <% end %>
@@ -44,13 +40,12 @@
     <%= form.text_area :address, class:"form-control", placeholder:"Enter address", rows:"4" %>
   </div>
 
-  <% if (action == "new") %>
   <hr>
     <div class="form-group">
       <span class="h5">Sub Addresses:</span>
       <br><br>
 
-      <%= form.fields_for :addresses, Address.new do |addresses_form| %>
+      <%= form.fields_for :addresses do |addresses_form| %>
         <%= addresses_form.label :house_name %>
         <%= addresses_form.text_field :house_name, class:"form-control", placeholder:"Enter housename" %>
         <br>
@@ -63,7 +58,6 @@
 
     </div>
   <hr>
-  <% end %>
 
   <div class="form-group">
     <%= form.label :mobile_number %>

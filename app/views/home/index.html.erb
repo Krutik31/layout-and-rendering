@@ -17,12 +17,18 @@
               <tr>
                 <td><%= link_to "All Orders", orders_path %></td>
               </tr>
+              <tr>
+                <td><%= link_to "Employees", employees_path %></td>
+              </tr>
             <% elsif %>
               <tr>
                 <td><%= link_to "All Products", products_path %></td>
               </tr>
               <tr>
                 <td><%= link_to "Your Orders", orders_path %></td>
+              </tr>
+              <tr>
+                <td><%= link_to "Employees", employees_path %></td>
               </tr>
             <% end %>
         </tbody>
@@ -43,6 +49,9 @@
           </tr>
           <tr>
             <td><%= link_to "Sign in", new_user_session_path %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "Employees", employees_path %></td>
           </tr>
         </tbody>
       </table>

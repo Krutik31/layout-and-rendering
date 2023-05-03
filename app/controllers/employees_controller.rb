@@ -9,11 +9,11 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+    @employee.addresses.new
   end
 
   def create
     @employee = Employee.new(employee_params)
-    hobbies_data
     if @employee.save
       redirect_to employees_path
     else
@@ -21,12 +21,9 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def edit
-    @address = Address.find_by(employee_id: @employee.id)
-  end
+  def edit; end
 
   def update
-    hobbies_data
     if @employee.update(employee_params)
       redirect_to employee_path(@employee)
     else
@@ -51,13 +48,9 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
   end
 
-  def hobbies_data
-    @employee.hobbies_data = params['employee']['hobbies']
-  end
-
   def employee_params
     params.require(:employee).permit(:employee_name, :email, :password, :gender, :address, :mobile_number,
-                                     :birth_date, :document, hobbies: [''],
-                                                             addresses_attributes: %i[house_name street_name road])
+                                     :birth_date, :document, hobby_ids: [],
+                                                             addresses_attributes: %i[id house_name street_name road])
   end
 end
