@@ -1,0 +1,36 @@
+print: don't point cursor to the next line after printing.
+puts: point the cursor to the next line after printing.
+p: used for showing more raw version of an object. (mainly used for debugging)
+
+==========================================================================================================================
+
+Datatypes are classes & Variables are objects in ruby.
+
+Strings are mutable: We can do various operations on a string objects and change it.
+The memory locations of two same strings will be different.
+
+Symbols are immutable: We can not do operations on a symbol or we can not modify it.
+The memory locations of two same symbols will be same.
+
+Frozen Strings: The memory locations of two same frozen strings will be same.
+"kp".freeze.object_id # => 20
+"kp".freeze.object_id # => 20
+
+==========================================================================================================================
+
+Difference b/w length, size & count (IN RUBY)
+
+length & size is exactly same, they shares same source code. no defference b/w them other than a name.
+"kp".length # 2
+"kp".size # 2
+[1,2,3].length # 3
+[1,2,3].size # 3
+
+count has extra features that length or size doesn't have. it can take extra arguments. if we not pass any then it will work same as length.
+[1,2,3].count # 3
+[1,2,3,1].count(1) # 2
+"kp".count # ERROR
+"kpk".count("k") # 2
+
+==========================================================================================================================
+

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag @comment do %>
+    
+  <%= render partial: "error_message" %>
+
+  <%= render partial: "form", locals: { comment: @comment, url: post_comments_path(@post.id), submit_btn: "Comment" } %>
+      
+<% end %>
