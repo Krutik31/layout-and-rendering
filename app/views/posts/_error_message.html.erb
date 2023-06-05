@@ -1,0 +1,11 @@
+<% if @post.errors.any? %>
+  <hr>
+  <div style="color:red;">
+    <h5><%= @post.errors.count %> errors found.</h5>
+    <ul>
+      <% @post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

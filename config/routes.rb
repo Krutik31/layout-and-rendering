@@ -20,4 +20,17 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resources :posts, except: %i[show] do
+    resources :comments, only: %i[index new create]
+
+    collection do
+      resources :comments, only: %i[destroy]
+    end
+
+    member do
+      get '/like', to: 'posts#like', as: 'like'
+      get '/unlike', to: 'posts#unlike', as: 'unlike'
+    end
+  end
 end

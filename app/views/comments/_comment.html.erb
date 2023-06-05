@@ -1,0 +1,12 @@
+<%= turbo_frame_tag comment do %>
+  <div class="text-right">
+    <p><strong><%= comment.user.email %>:</strong> <%= comment.comment %></p>
+    <p class="text-secondary">(<%= comment.created_at %>)</p>
+
+    <% if(comment.user == current_user) %>
+      <%= link_to "Remove", comment_path(comment.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>
+
+  </div>
+  <hr>
+<% end %>
