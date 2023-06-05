@@ -2,8 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post = Post.find(params['post_id'])
-    @comments = @post.comments.order(created_at: :desc)
+    @post = Post.includes(:comments).find(params['post_id'])
   end
 
   def new
